@@ -23,7 +23,7 @@ export function Preview({
         <Calendar className="size-4" />
         <p>{date.toLocaleDateString()}</p>
       </div>
-      <article className="line-clamp-6 md:line-clamp-5 xl:line-clamp-4">
+      <article className="prose prose-neutral max-w-none line-clamp-6 md:line-clamp-5 xl:line-clamp-4">
         <MDXRemote source={contentPreview} />
       </article>
       <div className="flex justify-end">

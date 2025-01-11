@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <main className="px-8 md:px-44 xl:px-96">
-      <article>
+      <article className="prose prose-neutral max-w-none">
         <h1 className="text-2xl font-bold">Olá, sou o Matheus! 👋</h1>
         <p>
           Por enquanto, essa página ainda está vazia. Talvez algum outro dia

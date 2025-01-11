@@ -35,7 +35,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {
     title: data.title,
     date: new Date(data.date),
-    contentPreview: content.slice(0, 512).trim(),
+    contentPreview: content.length > 512 ? content.slice(0, 512).trim() + '...' : content,
     content: content,
     slug: realSlug
   }
