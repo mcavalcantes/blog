@@ -52,7 +52,7 @@ export default function Layout({
             </div>
           </header>
           {children}
-          <footer className="mt-auto h-24 text-xs grid place-content-center">
+          <footer className="select-none mt-auto h-24 text-xs grid place-content-center">
             {`© ${new Date().getFullYear()} · Matheus Cavalcante`}
           </footer>
         </div>

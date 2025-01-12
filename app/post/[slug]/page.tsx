@@ -26,7 +26,7 @@ export default async function Post({
             <p>{post.date.toLocaleDateString()}</p>
           </div>
         </div>
-        <article className="prose prose-neutral max-w-none">
+        <article className="prose prose-lg prose-neutral max-w-none">
           <MDXRemote source={post.content} />
         </article>
       </div>
