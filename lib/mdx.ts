@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { compileMDX } from 'next-mdx-remote/rsc'
 
 interface Post {
   title: string
@@ -26,11 +25,6 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   
   const { data, content } = matter(fileContents)
-  
-  const { content: compiledContent } = await compileMDX({
-    source: content,
-    options: { parseFrontmatter: true }
-  })
 
   return {
     title: data.title,
