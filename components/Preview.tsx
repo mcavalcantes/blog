@@ -13,7 +13,7 @@ export interface PreviewProps {
   slug: string;
 }
 
-export function Preview({
+export async function Preview({
   title,
   date,
   contentPreview,
@@ -32,7 +32,7 @@ export function Preview({
       <div className="text-sm text-neutral-700 flex justify-between">
         <div className="select-none flex items-center gap-1">
           <Chat className="size-5" />
-          <p>{getPostCommentCount(slug)}</p>
+          <p>{await getPostCommentCount(slug)}</p>
         </div>
         <Link href={`post/${slug}`} className="select-none group py-0.5 w-36 flex gap-1 items-center justify-center rounded-lg hover:bg-[--hover] hover:shadow hover:shadow-[--shadow] transition">
           <p>Continuar lendo</p>
