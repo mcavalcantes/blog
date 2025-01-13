@@ -1,7 +1,9 @@
 import { Calendar } from "./heroicons/Calendar";
 import { ArrowRight } from "./heroicons/ArrowRight";
+import { Chat } from "./heroicons/Chat";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { formatDate } from "@/lib/formatDate";
+import { getPostCommentCount } from "@/lib/getPostCommentCount";
 import Link from "next/link";
 
 export interface PreviewProps {
@@ -27,8 +29,12 @@ export function Preview({
       <article className="prose prose-neutral max-w-none line-clamp-6 md:line-clamp-5 xl:line-clamp-4">
         <MDXRemote source={contentPreview} />
       </article>
-      <div className="flex justify-end">
-        <Link href={`post/${slug}`} className="select-none group py-0.5 w-36 text-sm text-neutral-700 flex gap-1 items-center justify-center rounded-lg hover:bg-[--hover] hover:shadow hover:shadow-[--shadow] transition">
+      <div className="text-sm text-neutral-700 flex justify-between">
+        <div className="select-none flex items-center gap-1">
+          <Chat className="size-5" />
+          <p>{getPostCommentCount(slug)}</p>
+        </div>
+        <Link href={`post/${slug}`} className="select-none group py-0.5 w-36 flex gap-1 items-center justify-center rounded-lg hover:bg-[--hover] hover:shadow hover:shadow-[--shadow] transition">
           <p>Continuar lendo</p>
           <ArrowRight className="size-4 group-hover:translate-x-1 transition" />
         </Link>

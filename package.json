@@ -6,16 +6,19 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.4",
+    "@prisma/client": "^6.2.1",
     "@types/mdx": "^2.0.13",
     "gray-matter": "^4.0.3",
     "next": "15.1.4",
     "next-mdx-remote": "^5.0.0",
+    "prisma": "^6.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

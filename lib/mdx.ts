@@ -1,13 +1,26 @@
+import { getPostCommentCount } from './getPostCommentCount';
+import { getPostComments } from './getPostComments';
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+type Comment = {
+  id?: number;
+  createdAt?: Date;
+  postSlug?: string;
+  authorName?: string;
+  authorEmail?: string;
+  content?: string;
+}
+
 interface Post {
-  title: string
-  date: Date
+  title: string;
+  date: Date;
   contentPreview: string;
-  content: string
-  slug: string
+  content: string;
+  slug: string;
+  commentCount: number | undefined;
+  comments: Array<Comment>;
 }
 
 const POSTS_PATH = path.join(process.cwd(), 'content/posts')
@@ -26,12 +39,17 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   
   const { data, content } = matter(fileContents)
 
+  const commentCount = await getPostCommentCount(slug)
+  const comments = await getPostComments(slug)
+
   return {
     title: data.title,
     date: new Date(data.date),
     contentPreview: content.length > 512 ? content.slice(0, 512).trim() + '...' : content,
     content: content,
-    slug: realSlug
+    slug: realSlug,
+    commentCount: commentCount,
+    comments: comments
   }
 }
 
