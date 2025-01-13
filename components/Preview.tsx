@@ -1,6 +1,7 @@
 import { Calendar } from "./heroicons/Calendar";
 import { ArrowRight } from "./heroicons/ArrowRight";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { formatDate } from "@/lib/formatDate";
 import Link from "next/link";
 
 export interface PreviewProps {
@@ -21,7 +22,7 @@ export function Preview({
       <h2 className="text-2xl font-bold">{title}</h2>
       <div className="select-none flex items-center gap-1 text-sm text-neutral-700">
         <Calendar className="size-4" />
-        <p>{date.toLocaleDateString()}</p>
+        <p>{formatDate(date)}</p>
       </div>
       <article className="prose prose-neutral max-w-none line-clamp-6 md:line-clamp-5 xl:line-clamp-4">
         <MDXRemote source={contentPreview} />

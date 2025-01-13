@@ -2,6 +2,7 @@ import { getPostBySlug } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Calendar } from "@/components/heroicons/Calendar";
 import { ArrowLeft } from "@/components/heroicons/ArrowLeft";
+import { formatDate } from "@/lib/formatDate";
 import Link from "next/link";
 
 export default async function Post({
@@ -23,7 +24,7 @@ export default async function Post({
           <h2 className="text-2xl font-bold">{post.title}</h2>
           <div className="select-none flex items-center gap-1 text-sm text-neutral-700">
             <Calendar className="size-4" />
-            <p>{post.date.toLocaleDateString()}</p>
+            <p>{formatDate(post.date)}</p>
           </div>
         </div>
         <article className="prose prose-lg prose-neutral max-w-none">
